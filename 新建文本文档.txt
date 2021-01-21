@@ -1,1 +1,0 @@
-	<link rel="shortcut  icon" href="images/qizi.ico" type="image/x-icon" />
