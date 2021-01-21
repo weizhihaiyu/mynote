@@ -1,0 +1,553 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>网站开发</title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-require-zoom-fix foreignobject { font-size: var(--mermaid-font-zoom); }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+ :root {--mermaid-font-zoom:1.5em ;} 
+</style>
+</head>
+<body class='typora-export os-windows'>
+<div id='write'  class=''><h1><a name="网站开发" class="md-header-anchor"></a><span>网站开发</span></h1><h2><a name="a最开始" class="md-header-anchor"></a><span>A.最开始</span></h2><h3><a name="1最基础" class="md-header-anchor"></a><span>1.最基础</span></h3><ol start='' ><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_header'><span> 标题居中 </span></a><span>】 align=&quot;center&quot;的使用使布局更完美</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_headers'><span> 各种大小的标题 </span></a><span>】 h1</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_hr'><span> 水平线 </span></a><span>】 hr</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_comment'><span> 注释 </span></a><span>】 ！--</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_paragraphs1'><span> 段落 </span></a><span>】 p</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_paragraphs'><span> 换行 </span></a><span>】 br /</span></li></ol><h3><a name="2样式" class="md-header-anchor"></a><span>2.样式</span></h3><ol start='' ><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_bgcolor'><span> 背景颜色1 </span></a><span>】 bgcolor=&quot;yellow&quot;</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_styles'><span> 样式1 </span></a><span>】 内含背景颜色，字体大小，字体颜色</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_textformatting'><span> 字体效果 </span></a><span>】 各类效果</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_preformattedtext'><span> 原样输出 </span></a><span>】 pre</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_computeroutput'><span> 计算机样式 </span></a><span>】 各类编程样式</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_abbracronym'><span> 触显样式 </span></a><span>】 abbr和acronym</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_bdo'><span> 从左往右写 </span></a><span>】 bdo dir=&quot;rtl&quot;</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_quotations'><span> 引用 </span></a><span>】 blockquote和q</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_delins'><span> 删除与下划线 </span></a><span>】 del和ins</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_formatting_dfn'><span> 斜体触显样式1 </span></a><span>】 dfn+title</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_formatting_dfn_2'><span> 斜体触显样式2 </span></a><span>】 dfn+abbr+title</span></li><li><span>【</span><a href='https://www.w3school.com.cn/html/html_css.asp'><span> 接触css </span></a><span>】 style/link/div/span</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_style'><span> 用头部文件 </span></a><span>】 控制全局</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_back_bad'><span> 背景和字体 </span></a><span>】 背景配色和字体配色bgcolor=和 text=</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_back_img'><span> 背景图片 </span></a><span>】 背景加入垫层background</span></li></ol><h3><a name="3链接" class="md-header-anchor"></a><span>3.链接</span></h3><ol start='' ><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_links'><span> 文字链接 </span></a><span>】 最原始href=</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_imglink'><span> 图片链接 </span></a><span>】 涉及了图片属性，border=，和src=</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_link_target'><span> 新窗口打开 </span></a><span>】 target=“_blank”属性</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_linknoline'><span> 没有下划线 </span></a><span>】 style=“text-decoration:none”属性</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_link'><span> 链接外部css </span></a><span>】 调用外部样式文件link</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_link_locations'><span> 锚定效果 </span></a><span>】 从name定义到#</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_frame_getfree'><span> 跳出框架 </span></a><span>】 target=“_top”属性</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_mailto'><span> 创建电子邮件 </span></a><span>】 访问一个邮件链接</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_mailto2'><span> 创建电子邮件2 </span></a><span>】 访问一个邮件链接</span></li></ol><h3><a name="4-图片" class="md-header-anchor"></a><span>4. 图片</span></h3><ol start='' ><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_image'><span> 插如图片 </span></a><span>】 调制大小src=和 width=和 height=</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_image2'><span> 调用路径图片 </span></a><span>】 两种路径下的图片</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_backgroundimage'><span> 背景图片 </span></a><span>】 背景图片的铺设 background=</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_image_align'><span> 排列图片 </span></a><span>】 不同的位置align</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_image_float'><span> 图片浮动 </span></a><span>】 浮动到一端align</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_image_size'><span> 调节尺寸 </span></a><span>】 width= height=</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_image_alt'><span> 图片替换文本 </span></a><span>】 未了防止图片显示不出来，用文字代替，alt</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_image_link'><span> 图片链接 </span></a><span>】 可以用来做图片按钮，就是链接中间加图片</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_areamap'><span> 图片映射 </span></a><span>】 map和area</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_ismap'><span> 图片变映射 </span></a><span>】 图片链接的一种</span></li></ol><h3><a name="5表格" class="md-header-anchor"></a><span>5.表格</span></h3><ol start='' ><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_tables'><span> 表格 </span></a><span>】 最原始的table，tr，td，</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_table_borders'><span> 表格边框 </span></a><span>】 border=</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_tables2'><span> 没有边框的名字 </span></a><span>】 border=“0”或者不存在这一句</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_table_headers'><span> 表格表头 </span></a><span>】 th的使用</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_table_nbsp'><span> 空表格 </span></a><span>】 那就是写了一个不填</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_tables3'><span> 表格标题 </span></a><span>】 caption的使用</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_table_span'><span> 跨行和跨列 </span></a><span>】 colspan和rowspan的使用</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_table_elements'><span> 表格内标签 </span></a><span>】 表格内嵌套其他标签</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_table_cellpadding'><span> 表格边距 </span></a><span>】 用cellpadding调制大小</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_table_cellspacing'><span> 表格间距 </span></a><span>】 用cellspacing调制边框大小</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_table_background'><span> 表格背景 </span></a><span>】 调制背景颜色或者背景图片</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_table_cellbackground'><span> 单元格背景 </span></a><span>】 调制单个单元格的背景颜色</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_table_align'><span> 设置输出 </span></a><span>】 设置左对齐输出，或设置靠右对齐输出align</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_table_frame'><span> 框架属性 </span></a><span>】 frame效果设置</span></li></ol><h3><a name="6列表" class="md-header-anchor"></a><span>6.列表</span></h3><ol start='' ><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_list_unordered'><span> 无序列表 </span></a><span>】 li+ul</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_list_ordered'><span> 有序列表 </span></a><span>】 li+ol</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_lists_unordered'><span> 不同无序列表 </span></a><span>】 type的使用</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_lists_ordered'><span> 不同有序列表 </span></a><span>】 type的使用</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_lists_nested'><span> 列表的嵌套 </span></a><span>】 列表中使用列表</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_lists_nested2'><span> 列表的嵌套2 </span></a><span>】 列表中使用列表</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_list_definition'><span> 自定义列表效果 </span></a><span>】 dd，dt，dl的使用</span></li></ol><h3><a name="7框架" class="md-header-anchor"></a><span>7.框架</span></h3><ol start='' ><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_frame_cols'><span> 竖直框架 </span></a><span>】 frameset cols的使用</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_frame_rows'><span> 水平框架 </span></a><span>】 frameset rows的使用</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_noframes'><span> 无框架提示 </span></a><span>】 无框架提示noframes</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_frame_mix'><span> 混合框架 </span></a><span>】 叠加使用</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_frame_noresize'><span> 属性框架 </span></a><span>】 noresize的使用</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_frame_navigation'><span> 导航框架 </span></a><span>】 目录效果</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_iframe'><span> 内联框架 </span></a><span>】 在界面内设置一个小框架iframe</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_frame_jump'><span> 框架指定位置 </span></a><span>】 使用和之前链接一样效果的指向锚定（比较难）</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_frame_navigation2'><span> 框架指向 </span></a><span>】 从一个html到另一个html的指向（比较难）</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_iframe_height_width'><span> 内联框架大小 </span></a><span>】 设置内联框架的大小，带有边框和滑动条</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_iframe_frameborder'><span> 内联删除边框 </span></a><span>】 设置内联框架删除边框</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_iframe_target'><span> 内联打开 </span></a><span>】 设置链接在内联框架中打开效果</span></li></ol><h3><a name="其他" class="md-header-anchor"></a><span>其他</span></h3><ol start='' ><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_meta'><span> 属性标识制作 </span></a><span>】 本文档的 meta 属性标识了创作者和编辑软件，相当与代码属性的注释</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_redirect'><span> 定时切换页面 </span></a><span>】 5 秒内被重定向到新的地址。</span></li><li><span>【</span><a href='https://www.w3school.com.cn/html/html_filepaths.asp'><span> 路径 </span></a><span>】 尽量用相对路径</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_script'><span> 插入脚本 </span></a><span>】 脚本 script</span></li><li><span>【</span><a href='https://www.w3school.com.cn/html/html_blocks.asp'><span> 块 </span></a><span>】 div和span他们起着控制全局效果作用（十分重要）</span></li><li><span>【</span><a href='https://www.w3school.com.cn/html/html_classes.asp'><span> 类 </span></a><span>】 文段效果style（十分重要）</span></li><li><span>【</span><a href='https://www.w3school.com.cn/html/html_layout.asp'><span> 布局 </span></a><span>】 界面效果（十分重要</span></li><li><span>【</span><a href='https://www.w3school.com.cn/html/html_responsive.asp'><span> 响应式设计 </span></a><span>】 自动调制大小</span></li></ol><h2><a name="b最开始" class="md-header-anchor"></a><span>B.最开始</span></h2><ol start='' ><li><span>【 align=&quot; &quot; 】 中间可以填（center，left，right）</span></li><li><span>【 style=&quot; &quot; 】 font-family:（verdana，times，arial） ;color: （颜色）;font-size:(数字）px；background-color:（颜色）；text-align:（center）</span></li><li><span>【 b粗体 】 字体</span></li><li><span>【 strong粗体 】 字体</span></li><li><span>【 big大体 】 字体</span></li><li><span>【 em斜体 】 字体</span></li><li><span>【 i斜体 】 字体</span></li><li><span>【 small小体 】 字体</span></li><li><span>【 sub下标 】 字体</span></li><li><span>【 sup上标 】 字体</span></li><li><span>【 pre 】 原样输出</span></li><li><span>【 address斜体 】 字体</span></li><li><span>【 cite著作标题 】 不知道什么用</span></li><li><span>【 dfn斜体 】 字体</span></li><li><span>【 bdo dir=&quot;rtl&quot; 】 从左向右</span></li><li><span>【 del删除 】 字体</span></li><li><span>【 ins下划线 】 字体</span></li><li><span>【 abbr title=“内容” 】 触显</span></li><li><span>【 blockquote引用 】 长引用</span></li><li><span>【 q引用 】 短引用</span></li><li><span>【 acronym title“内容” 】 触显</span></li><li><span>【 code英文 】 英文字体</span></li><li><span>【 kbd英文 】 英文字体</span></li><li><span>【 tt英文 】 英文字体</span></li><li><span>【 samp英文 】 英文字体</span></li><li><span>【 var英文 】 英文字体</span></li></ol><h2><a name="c表格手册" class="md-header-anchor"></a><span>C.表格手册</span></h2><ol start='' ><li><span>【</span><a href='https://www.w3school.com.cn/tags/html_ref_byfunc.asp'><span> 参考手册 </span></a><span>】 各类标签的集合，查看左边，你会发现这就是一部html字典</span></li><li><span>【</span><a href='https://www.w3school.com.cn/html/html_entities.asp'><span> 特殊字符的输出 </span></a><span>】 在最下面查看表格</span></li></ol><h2><a name="d比较难的案例" class="md-header-anchor"></a><span>D.比较难的案例</span></h2><ol start='' ><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_areamap'><span> 图片映射 </span></a><span>】 map和area</span></li><li><span>【</span><a href='https://www.w3school.com.cn/html/html_classes.asp'><span> 类 </span></a><span>】 文段效果style（十分重要）</span></li><li><span>【</span><a href='https://www.w3school.com.cn/html/html_layout.asp'><span> 布局 </span></a><span>】 界面效果</span></li><li><span>【</span><a href='https://www.w3school.com.cn/html/html_responsive.asp'><span> 响应式设计 </span></a><span>】 自动调制大小</span></li><li><span>【</span><a href='https://www.w3school.com.cn/tiy/t.asp?f=html_frame_navigation'><span> 导航框架 </span></a><span>】 目录效果</span></li></ol><h2><a name="e后续补入" class="md-header-anchor"></a><span>E.后续补入</span></h2><h4><a name="1网站搭建之路" class="md-header-anchor"></a><span>1.网站搭建之路</span></h4><p><span>要学（提炼链接）</span></p><p><a href='https://www.zhihu.com/answer/154181100'><span>单人做一个网站需要掌握哪些知识？</span></a></p><p><span>1.html（文字，图片）</span></p><p><span>2.css（颜色，布局，排版）（Bootstrap）</span></p><p><span>3.javascript（交互）</span></p><p><span>4.MySQL(数据库）</span></p><p><span>5.Java技术栈JDBC（提取数据）</span></p><p><span>6.JSP（显示到html）</span></p><p><span>7.struts（加快开发，代替JSP）</span></p><p><span>8.Hibernate(代替JDBC)</span></p></div>
+</body>
+</html>
