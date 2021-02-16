@@ -1,0 +1,582 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>STOgame</title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-require-zoom-fix foreignobject { font-size: var(--mermaid-font-zoom); }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+ :root {--mermaid-font-zoom:1.5em ;} 
+</style>
+</head>
+<body class='typora-export os-windows'>
+<div id='write'  class=''><h1><a name="stogame" class="md-header-anchor"></a><span>STOgame</span></h1><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#stogame">STOgame</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n4"><a class="md-toc-inner" href="#一热点游戏">一，热点游戏</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n5"><a class="md-toc-inner" href="#1这是警察">1.这是警察【】</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n7"><a class="md-toc-inner" href="#2石油">2.石油【】</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n11"><a class="md-toc-inner" href="#3光之子">3.光之子</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n14"><a class="md-toc-inner" href="#4城市天际线">4.城市。天际线</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n19"><a class="md-toc-inner" href="#5了不起的修仙模拟器">5.了不起的修仙模拟器</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n21"><a class="md-toc-inner" href="#6双点医院">6.双点医院</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n25"><a class="md-toc-inner" href="#7木筏求生">7.木筏求生</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n28"><a class="md-toc-inner" href="#8太吾绘卷">8.太吾绘卷【】</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n32"><a class="md-toc-inner" href="#9植物大战僵尸">9.植物大战僵尸</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n34"><a class="md-toc-inner" href="#10分工装修">10.分工装修</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n38"><a class="md-toc-inner" href="#11三国志14">11.三国志14</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n41"><a class="md-toc-inner" href="#12帝国时代3决定版">12.帝国时代3决定版</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n44"><a class="md-toc-inner" href="#13乞丐模拟器">13.乞丐模拟器</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n49"><a class="md-toc-inner" href="#14部落与弯刀">14.部落与弯刀</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n53"><a class="md-toc-inner" href="#15全面战争-三国">15.全面战争-三国</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n61"><a class="md-toc-inner" href="#16星球流浪者">16.星球流浪者</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n64"><a class="md-toc-inner" href="#17乐高系列">17.乐高系列</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n67"><a class="md-toc-inner" href="#18疯狂高楼大亨">18.疯狂高楼大亨</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n78"><a class="md-toc-inner" href="#19美国逃亡者">19.美国逃亡者【】</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n81"><a class="md-toc-inner" href="#20模拟城市-未来之城">20.模拟城市-未来之城</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n83"><a class="md-toc-inner" href="#21钢铁之师">21.钢铁之师</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n87"><a class="md-toc-inner" href="#22彩虹6号围攻">22.彩虹6号，围攻</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n91"><a class="md-toc-inner" href="#23最终幻想">23.最终幻想</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n95"><a class="md-toc-inner" href="#24文明">24.文明</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n99"><a class="md-toc-inner" href="#25无人深空">25.无人深空</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n104"><a class="md-toc-inner" href="#26四海旅人">26.四海旅人</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n107"><a class="md-toc-inner" href="#27钢铁雄心4">27.钢铁雄心4</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n111"><a class="md-toc-inner" href="#28吃鸡模拟器">28.吃鸡模拟器</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n115"><a class="md-toc-inner" href="#29英雄连2">29.英雄连2</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n118"><a class="md-toc-inner" href="#30自由人游击战争">30.自由人游击战争</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n122"><a class="md-toc-inner" href="#31黑暗地牢">31.黑暗地牢</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n127"><a class="md-toc-inner" href="#32八方旅人">32.八方旅人</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n132"><a class="md-toc-inner" href="#33stela">33.Stela</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n137"><a class="md-toc-inner" href="#34归于沉寂">34.归于沉寂</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n141"><a class="md-toc-inner" href="#35星露谷物语">35.星露谷物语</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n146"><a class="md-toc-inner" href="#36石质碎片stoneshard">36.石质碎片/Stoneshard</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n150"><a class="md-toc-inner" href="#37荒野大镖客救赎">37.荒野大镖客。救赎</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n154"><a class="md-toc-inner" href="#38旁观者2">38.旁观者2</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n157"><a class="md-toc-inner" href="#39孤山速降">39.孤山速降</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n162"><a class="md-toc-inner" href="#40亿万僵尸军团">40.亿万僵尸军团</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n166"><a class="md-toc-inner" href="#41这是我的战争">41.这是我的战争</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n171"><a class="md-toc-inner" href="#42井中生物">42.井中生物</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n175"><a class="md-toc-inner" href="#43海商王">43.海商王</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n180"><a class="md-toc-inner" href="#44泰拉瑞亚">44.泰拉瑞亚【】</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n185"><a class="md-toc-inner" href="#45空洞骑士">45.空洞骑士</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n188"><a class="md-toc-inner" href="#46少林九武猴">46.少林九武猴</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n191"><a class="md-toc-inner" href="#47人类一败涂地">47.人类：一败涂地</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n195"><a class="md-toc-inner" href="#48奇异人生2-全5章奇异人生2全章节解锁版">48.奇异人生2 全5章/奇异人生2全章节解锁版</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n200"><a class="md-toc-inner" href="#49中世纪王朝">49.中世纪王朝</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n203"><a class="md-toc-inner" href="#50网吧模拟器">50.网吧模拟器</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n207"><a class="md-toc-inner" href="#51油管主播的生活">51.油管主播的生活</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n211"><a class="md-toc-inner" href="#52缺氧">52.缺氧</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n216"><a class="md-toc-inner" href="#53边缘世界环世界1g">53.边缘世界/环世界(1G)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n219"><a class="md-toc-inner" href="#54桥梁建造者07g">54.桥梁建造者(0.7G)【】</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n223"><a class="md-toc-inner" href="#55伟大时代中世纪5g">55.伟大时代：中世纪（5G)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n228"><a class="md-toc-inner" href="#56王国风云2十字军之王2">56.王国风云2/十字军之王2</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n231"><a class="md-toc-inner" href="#57统一指挥21g）">57.统一指挥2（1G）【】</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n234"><a class="md-toc-inner" href="#58枪与香蕉">58.枪与香蕉</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n238"><a class="md-toc-inner" href="#59全面战争模拟器">59.全面战争模拟器</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n242"><a class="md-toc-inner" href="#60异星探险家网络联机版星球探索者网络联机">60.异星探险家：网络联机版/星球探索者网络联机</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n245"><a class="md-toc-inner" href="#61浮岛物语">61.浮岛物语</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n249"><a class="md-toc-inner" href="#62arise一个平凡的故事">62.Arise：一个平凡的故事</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n252"><a class="md-toc-inner" href="#63末日准备狂">63.末日准备狂</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n256"><a class="md-toc-inner" href="#64鬼谷八荒">64.鬼谷八荒</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n261"><a class="md-toc-inner" href="#65野性的海洋😡）">65.野性的海洋（😡）</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n264"><a class="md-toc-inner" href="#66要塞3">66.要塞3</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n268"><a class="md-toc-inner" href="#67饥荒">67.饥荒</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n273"><a class="md-toc-inner" href="#68义军">68.义军</a></span></p></div><p>&nbsp;</p><h3><a name="一热点游戏" class="md-header-anchor"></a><span>一，热点游戏</span></h3><h4><a name="1这是警察" class="md-header-anchor"></a><span>1.这是警察【】</span></h4><p><a href='https://pan.baidu.com/share/init?surl=nerdvE8usXcVUVu_kS5rXQ' target='_blank' class='url'>https://pan.baidu.com/share/init?surl=nerdvE8usXcVUVu_kS5rXQ</a><span>【b9vu】</span></p><h4><a name="2石油" class="md-header-anchor"></a><span>2.石油【】</span></h4><p><a href='https://pan.baidu.com/s/1TDvX6qwfvZUoPNIL8SNVXQ#list/path=%2F' target='_blank' class='url'>https://pan.baidu.com/s/1TDvX6qwfvZUoPNIL8SNVXQ#list/path=%2F</a></p><p><span>赠品</span><a href='https://pan.baidu.com/s/1ObPwX25mi_Jcopc9zpwH3A#list/path=%2F' target='_blank' class='url'>https://pan.baidu.com/s/1ObPwX25mi_Jcopc9zpwH3A#list/path=%2F</a></p><p><span>激活码：254199</span></p><h4><a name="3光之子" class="md-header-anchor"></a><span>3.光之子</span></h4><p><a href='https://pan.baidu.com/s/1pSMyQdOtOLFGexFY7HRe8w#list/path=%2F' target='_blank' class='url'>https://pan.baidu.com/s/1pSMyQdOtOLFGexFY7HRe8w#list/path=%2F</a></p><p><span>激活码：547847</span></p><h4><a name="4城市天际线" class="md-header-anchor"></a><span>4.城市。天际线</span></h4><p><a href='https://pan.baidu.com/s/1_lUbBNlHXnH4Xd9Vq5RIhQ#list/path=%2F' target='_blank' class='url'>https://pan.baidu.com/s/1_lUbBNlHXnH4Xd9Vq5RIhQ#list/path=%2F</a></p><p><span>赠品链接：链接：</span><a href='https://pan.baidu.com/s/1SP6UkgKGaxSkQR9NCPx56A' target='_blank' class='url'>https://pan.baidu.com/s/1SP6UkgKGaxSkQR9NCPx56A</a><span> </span></p><p><span> 提取码：mbw2  </span></p><p><span> 激活码：126953</span></p><h4><a name="5了不起的修仙模拟器" class="md-header-anchor"></a><span>5.了不起的修仙模拟器</span></h4><p><span>了不起的修仙模拟器（提取码：bhn6）（激活码：587441）</span>
+<span>下载链接 </span><a href='https://pan.baidu.com/s/1_IaYEwFlytoVVQPg_qKYiA' target='_blank' class='url'>https://pan.baidu.com/s/1_IaYEwFlytoVVQPg_qKYiA</a></p><h4><a name="6双点医院" class="md-header-anchor"></a><span>6.双点医院</span></h4><p><a href='https://pan.baidu.com/share/init?surl=_Uq0Ql2FyjIp0xrG0XWKLg' target='_blank' class='url'>https://pan.baidu.com/share/init?surl=_Uq0Ql2FyjIp0xrG0XWKLg</a></p><p><strong><span>提取码：</span></strong><span>h6d0</span></p><p><strong><span>激活码：</span></strong><span>521487</span></p><h4><a name="7木筏求生" class="md-header-anchor"></a><span>7.木筏求生</span></h4><p><span>木筏生存/木筏求生（2G）（提取码：d15k）（激活码：259473）</span></p><p><span>下载链接 </span><a href='https://pan.baidu.com/s/1DYkiH2x-ioMGcDmTW7Q_qA' target='_blank' class='url'>https://pan.baidu.com/s/1DYkiH2x-ioMGcDmTW7Q_qA</a><span> </span></p><h4><a name="8太吾绘卷" class="md-header-anchor"></a><span>8.太吾绘卷【】</span></h4><p><a href='https://pan.baidu.com/share/init?surl=3re185ZaG1woYyM2uchzZA' target='_blank' class='url'>https://pan.baidu.com/share/init?surl=3re185ZaG1woYyM2uchzZA</a></p><p><strong><span>提取码：0c5w</span></strong></p><p><strong><span>激活码：</span></strong><span>214121</span></p><h4><a name="9植物大战僵尸" class="md-header-anchor"></a><span>9.植物大战僵尸</span></h4><p><span>电脑链接：</span><a href='https://pan.baidu.com/s/1I9wjwDJG6eMeZ1954INYRw' target='_blank' class='url'>https://pan.baidu.com/s/1I9wjwDJG6eMeZ1954INYRw</a><span> </span>
+<span>提取码：35xn</span></p><h4><a name="10分工装修" class="md-header-anchor"></a><span>10.分工装修</span></h4><p><a href='https://pan.baidu.com/share/init?surl=wu1rJ6qk48L77rZ7dLL29w' target='_blank' class='url'>https://pan.baidu.com/share/init?surl=wu1rJ6qk48L77rZ7dLL29w</a></p><p><span>激活码：214115</span></p><p><span>提取码：60xc </span></p><h4><a name="11三国志14" class="md-header-anchor"></a><span>11.三国志14</span></h4><p><a href='https://pan.baidu.com/share/init?surl=oasiH0YE4btMwkHkCuxORA' target='_blank' class='url'>https://pan.baidu.com/share/init?surl=oasiH0YE4btMwkHkCuxORA</a></p><p><strong><span>提取码：6688</span></strong></p><h4><a name="12帝国时代3决定版" class="md-header-anchor"></a><span>12.帝国时代3决定版</span></h4><p><a href='https://pan.baidu.com/share/init?surl=p_3CrtxoXJXY9pv2BKz91A' target='_blank' class='url'>https://pan.baidu.com/share/init?surl=p_3CrtxoXJXY9pv2BKz91A</a></p><p><span>激活码：【提取码：2943】</span></p><h4><a name="13乞丐模拟器" class="md-header-anchor"></a><span>13.乞丐模拟器</span></h4><p><a href='https://pan.baidu.com/share/init?surl=qz4qrNHzTRdwK4ARrOsorg' target='_blank' class='url'>https://pan.baidu.com/share/init?surl=qz4qrNHzTRdwK4ARrOsorg</a></p><p><span> 提取码：6688</span></p><p><span> 赠品链接：</span><a href='https://pan.baidu.com/s/1WHRiDJegYzOiqYSmvC42gg#list/path=%2F' target='_blank' class='url'>https://pan.baidu.com/s/1WHRiDJegYzOiqYSmvC42gg#list/path=%2F</a></p><p><span> 激活码：254121</span></p><h4><a name="14部落与弯刀" class="md-header-anchor"></a><span>14.部落与弯刀</span></h4><p><strong><span>下载链接：</span></strong><a href='https://pan.baidu.com/s/1-3Sf3VySvD0NxmCg6g8fFQ'><span>点击下载游戏</span></a></p><p><strong><span>提取码：</span></strong><span>b94t</span></p><p><strong><span>激活码：</span></strong><span>521447</span></p><h4><a name="15全面战争-三国" class="md-header-anchor"></a><span>15.全面战争-三国</span></h4><p><strong><span>V1.1.0版本下载</span></strong></p><p><strong><span>下载链接：</span></strong><span> </span><strong><a href='https://pan.baidu.com/s/1pDd47ZhDJoQ3QJ3fkRjYZQ#list/path=%2F&amp;parentPath=%2Fsharelink1103690475137-677539109036526'><span>点击下载游戏</span></a></strong></p><p><strong><span>提取码：</span></strong><span>6ist</span></p><p><strong><span>激活码：</span></strong><span>632225  </span></p><p><strong><span>以下为V1.5.3简体中文版：</span></strong></p><p><strong><span>下载链接：</span><a href='https://pan.baidu.com/s/19DSaeIbuMF-eMV_Cmcty1Q'><span>点击下载</span></a></strong></p><p><strong><span>提取码：6688</span></strong></p><h4><a name="16星球流浪者" class="md-header-anchor"></a><span>16.星球流浪者</span></h4><p><strong><span>下载链接：</span></strong><a href='https://pan.baidu.com/s/11Lpa8sm_mYHusG2iD1aT2w#list/path=%2F'><span>点击获取</span></a></p><p><strong><span>激活码：</span></strong><span>587779</span></p><h4><a name="17乐高系列" class="md-header-anchor"></a><span>17.乐高系列</span></h4><p><span>L-乐高游戏系列（动作类）（提取码：krn5）</span></p><p><span>下载链接：</span><a href='https://pan.baidu.com/s/1KRbGUvP7CPHS7n2rW8wajA'><span>点击下载</span></a></p><h4><a name="18疯狂高楼大亨" class="md-header-anchor"></a><span>18.疯狂高楼大亨</span></h4><figure><table><thead><tr><th><span>下载链接:</span></th><th><a href='https://pan.baidu.com/s/1SlB4u0mgi1Ly6tkdCbd_BA'><span>     https://pan.baidu.com/s/1SlB4u0mgi1Ly6tkdCbd_BA     </span></a></th></tr></thead><tbody><tr><td><span>赠品链接:</span></td><td><a href='https://www.wrmyx.com/plus/敬请期待'><span>     敬请期待     </span></a></td></tr><tr><td><span>激活码:</span></td><td><span>658779</span></td></tr></tbody></table></figure><h4><a name="19美国逃亡者" class="md-header-anchor"></a><span>19.美国逃亡者【】</span></h4><p><strong><span>下载链接：</span></strong><a href='https://pan.baidu.com/s/1u62cV8-WhKo9uAkPtTbDTw#list/path=%2F'><span>点击获取</span></a></p><p><strong><span>激活码：</span></strong><span>632547</span></p><h4><a name="20模拟城市-未来之城" class="md-header-anchor"></a><span>20.模拟城市-未来之城</span></h4><p><span>下载链接： </span><a href='https://pan.baidu.com/s/1phi8WwMNGyACZ7eRGiGJsQ'><span>点击下载</span></a>
+<span>赠品链接： </span><a href='https://pan.baidu.com/s/1zjRh0pbMG0863kEFK6nNLw'><span>点击下载</span></a>
+<span>激活码：521444</span></p><h4><a name="21钢铁之师" class="md-header-anchor"></a><span>21.钢铁之师</span></h4><p><span>链接：</span><a href='https://pan.baidu.com/s/16N8JvQOqx4RTbYw_Aj-9fg' target='_blank' class='url'>https://pan.baidu.com/s/16N8JvQOqx4RTbYw_Aj-9fg</a></p><p><span>提取码：gpj6</span></p><p><span> 激活码：548745</span></p><h4><a name="22彩虹6号围攻" class="md-header-anchor"></a><span>22.彩虹6号，围攻</span></h4><p><strong><span>下载链接：</span></strong><a href='https://pan.baidu.com/s/1NC3YsS7-kCCHqLaFB_Rf7w'><span>点击下载游戏</span></a></p><p><strong><span>提取码：</span></strong><span>9tvi</span></p><p><strong><span>激活码：</span></strong><span>336522</span></p><h4><a name="23最终幻想" class="md-header-anchor"></a><span>23.最终幻想</span></h4><p><strong><span>激活码：</span></strong><span>632548</span></p><p><strong><span>下载链接：</span></strong><a href='https://pan.baidu.com/s/1i08AdDA-gDfBUnlxOHwwUg'><strong><span>点击下载游戏</span></strong></a></p><p><strong><span>提取码：</span></strong><span>zmmf</span></p><h4><a name="24文明" class="md-header-anchor"></a><span>24.文明</span></h4><p><span>下载链接：</span><a href='https://pan.baidu.com/s/1zLV_xq7xS3T4wXckRF5pfQ#list/path=%2F'><span>点击下载</span></a>
+<span>赠品链接：</span><a href='https://pan.baidu.com/s/1xsztZHEVNaQu7QVda43EBg#list/path=%2F'><span>赠品下载</span></a></p><p><span>激活码：874447</span></p><p>&nbsp;</p><h4><a name="25无人深空" class="md-header-anchor"></a><span>25.无人深空</span></h4><p><span>游戏视频：</span><a href='https://www.bilibili.com/video/BV1ns41117RZ?from=search&amp;seid=5096919900615365175'><span>点击观看</span></a></p><p><strong><span>下载链接：</span></strong><a href='https://pan.baidu.com/s/1YIQb-N6cNldv1YDnnG0UPQ'><span>点击下载游戏</span></a></p><p><strong><span>提取码：</span></strong><span>1rg1</span></p><p><strong><span>激活码：</span></strong><span>225879</span></p><h4><a name="26四海旅人" class="md-header-anchor"></a><span>26.四海旅人</span></h4><p><span>游戏视频预览：</span><a href='https://media.st.dl.pinyuncloud.com/steam/apps/256799373/movie480_vp9.webm?t=1598966300'><span>点击查看</span></a></p><p><span>下载链接： </span><a href='https://pan.baidu.com/s/1xxXnImL_8Mcm54xt_-DKbQ'><span>点击下载</span></a>
+<span>赠品链接： 敬请期待</span>
+<span>激活码：提取码：6845</span></p><h4><a name="27钢铁雄心4" class="md-header-anchor"></a><span>27.钢铁雄心4</span></h4><p><span>游戏视频：</span><a href='https://www.bilibili.com/video/BV1Ss411Q7Aw?from=search&amp;seid=213446335490032518'><span>立即查看</span></a></p><p><span>下载链接：</span><a href='https://pan.baidu.com/s/12-sTodfMe08s1OcY_26nQQ#list/path=%2F' target='_blank' class='url'>https://pan.baidu.com/s/12-sTodfMe08s1OcY_26nQQ#list/path=%2F</a></p><p><span>激活码：652156</span></p><h4><a name="28吃鸡模拟器" class="md-header-anchor"></a><span>28.吃鸡模拟器</span></h4><p><span>游戏视频：</span><a href='https://media.st.dl.pinyuncloud.com/steam/apps/256704993/movie480.webm?t=1514990083'><span>立即查看</span></a></p><p><span>下载链接：</span><a href='https://pan.baidu.com/s/1k2E0ELXRFTBC7erpGhm5PQ#list/path=%2F' target='_blank' class='url'>https://pan.baidu.com/s/1k2E0ELXRFTBC7erpGhm5PQ#list/path=%2F</a></p><p><span>激活码：326984</span></p><h4><a name="29英雄连2" class="md-header-anchor"></a><span>29.英雄连2</span></h4><p><span>游戏视频预览：</span><a href='https://media.st.dl.pinyuncloud.com/steam/apps/2028762/movie480.webm?t=1447358017'><span>点击查看</span></a></p><p><span>下载链接： </span><a href='https://pan.baidu.com/s/17bzK--FHYEYNFLUZUtD9JA'><span>点击下载</span></a>
+<span>赠品链接： </span><a href='https://pan.baidu.com/s/11g1uiXwX7-03P-X-qYo8aA'><span>点击下载</span></a>
+<span>激活码：654778</span></p><h4><a name="30自由人游击战争" class="md-header-anchor"></a><span>30.自由人游击战争</span></h4><p><span>游戏视频：</span><a href='https://media.st.dl.pinyuncloud.com/steam/apps/256763097/movie480.webm?t=1569521953'><span>立即查看</span></a></p><p><span>下载链接：</span><a href='https://pan.baidu.com/s/1ktcWhFyMzGEHB_r26Oi9hw#list/path=%2F' target='_blank' class='url'>https://pan.baidu.com/s/1ktcWhFyMzGEHB_r26Oi9hw#list/path=%2F</a></p><p><span>激活码：258969</span></p><h4><a name="31黑暗地牢" class="md-header-anchor"></a><span>31.黑暗地牢</span></h4><p><span>宣传视频：</span><a href='https://www.bilibili.com/video/BV1Nx411k7NR?from=search&amp;seid=12536492933338733352'><span>点击观看</span></a></p><p><strong><span>下载链接：</span></strong><a href='https://pan.baidu.com/s/155AlBA21rveK5sLUI1DpTQ'><span>点击下载游戏</span></a></p><p><strong><span>提取码：</span></strong><span>wgyr</span></p><p><strong><span>激活码：</span></strong><span>215412</span></p><h4><a name="32八方旅人" class="md-header-anchor"></a><span>32.八方旅人</span></h4><p><span>游戏视频：</span><a href='https://www.bilibili.com/video/BV1Eb411j7UR?from=search&amp;seid=545591630025858298'><span>点击观看</span></a></p><p><strong><span>下载链接：</span></strong><a href='https://pan.baidu.com/s/1VcrgSgUZx8CFjj6-N-Qf7A'><strong><span>点击下载游戏</span></strong></a></p><p><strong><span>提取码：</span></strong><span>p68b</span></p><p><strong><span>激活码：</span></strong><span>748547</span></p><h4><a name="33stela" class="md-header-anchor"></a><span>33.Stela</span></h4><p><span> </span><strong><span>游戏视频预览：   </span><a href='https://media.st.dl.eccdnx.com/steam/apps/256775753/movie480.webm?t=1582139959'><span>    点击查看   </span></a></strong><span> </span></p><p><span>链接：</span><a href='https://pan.baidu.com/s/1vN2dVmEu98JLiLSfv3AOqw' target='_blank' class='url'>https://pan.baidu.com/s/1vN2dVmEu98JLiLSfv3AOqw</a></p><p><span>提取码：j4ln</span></p><p><span>解压密码：893132</span></p><h4><a name="34归于沉寂" class="md-header-anchor"></a><span>34.归于沉寂</span></h4><p><span>游戏视频：</span><a href='https://www.bilibili.com/video/BV19z411v7Mc?from=search&amp;seid=1077955325724903656'><span>点击观看</span></a></p><p><span>链接：</span><a href='https://pan.baidu.com/s/1W9fH5wO9epglRi1v4WNk3g' target='_blank' class='url'>https://pan.baidu.com/s/1W9fH5wO9epglRi1v4WNk3g</a></p><p><span>提取码：bczp</span></p><h4><a name="35星露谷物语" class="md-header-anchor"></a><span>35.星露谷物语</span></h4><p><span>游戏视频：</span><a href='https://www.bilibili.com/video/BV1Mp411o7GN?from=search&amp;seid=11685557433506623780'><span>点击观看</span></a></p><p><span>下载链接： </span><a href='https://pan.baidu.com/s/1UISBUIiyNzSuMIdRVcgR6Q'><span>点击下载</span></a></p><p><span>提取码：6688</span></p><p><span>赠品链接：</span><a href='https://pan.baidu.com/s/15MPsH6vMnKS9kIS5dSUJuw#list/path=%2F'><span>点击下载</span></a></p><h4><a name="36石质碎片stoneshard" class="md-header-anchor"></a><span>36.石质碎片/Stoneshard</span></h4><p><strong><span>下载链接：</span></strong><a href='https://pan.baidu.com/s/1enYNEquThvZS30fce8zJ3g'><span>点击下载游戏</span></a></p><p><strong><span>提取码：</span></strong><span>6kbm</span></p><p><strong><span>激活码：</span></strong><span>352116</span></p><h4><a name="37荒野大镖客救赎" class="md-header-anchor"></a><span>37.荒野大镖客。救赎</span></h4><p><span>游戏视频预览：</span><a href='http://pgc.cdn.xiaodutv.com/1718350471_2680542979_20170104163933.mp4?authorization=bce-auth-v1%2Fc308a72e7b874edd9115e4614e1d62f6%2F2017-01-04T08%3A40%3A08Z%2F-1%2F%2F5d4c7f20ff371a837714ae7a5cec01c2a60737737af3f3732ba1cd08f1aa85aa&amp;responseCacheControl=max-age%3D8640000&amp;responseExpires=Fri%2C+14+Apr+2017+16%3A40%3A08+GMT&amp;xcode=39930de361eab79e75c7cc64f41a4f250446596fa3697aa1&amp;time=1556368777'><span>点击查看</span></a></p><p><span>下载链接：</span><a href='https://pan.baidu.com/s/1xRglu-55N4A4h4IoE7N8CA'><span>点击下载</span></a>
+<span>赠品链接：暂无赠品</span></p><p><span>激活码：541115</span></p><h4><a name="38旁观者2" class="md-header-anchor"></a><span>38.旁观者2</span></h4><p><span>游戏视频：</span><a href='https://www.bilibili.com/video/BV16J411N7Va?from=search&amp;seid=6479077638647452958'><span>点击观看</span></a></p><p><span>下载链接： </span><a href='https://pan.baidu.com/s/1qgAz3ifeLDy5mA53MFUY7Q'><span>点击下载</span></a>
+<span>赠品链接： </span><a href='https://pan.baidu.com/s/1nNlTY4wDk6s9g1-j_Q4GQA'><span>点击下载</span></a>
+<span>激活码：254154</span></p><h4><a name="39孤山速降" class="md-header-anchor"></a><span>39.孤山速降</span></h4><p><span>游戏视频：</span><a href='https://www.bilibili.com/video/BV1DE411F7DY?from=search&amp;seid=4370149112968828865'><span>立即查看</span></a></p><p><strong><span>下载链接：</span></strong><a href='https://pan.baidu.com/s/1sgCys4B7lyBN_6hll3gufw'><span>点击下载游戏</span></a></p><p><strong><span>提取码：</span></strong><span>i2et</span></p><p><strong><span>激活码：</span></strong><span>365225</span></p><h4><a name="40亿万僵尸军团" class="md-header-anchor"></a><span>40.亿万僵尸军团</span></h4><p><span>亿万僵尸军团（激活码：252541）（提取码：d1vs）</span></p><p><span>下载链接 </span><a href='https://pan.baidu.com/s/1lfI579wM33paGXFpt5ZkwA' target='_blank' class='url'>https://pan.baidu.com/s/1lfI579wM33paGXFpt5ZkwA</a><span> </span></p><p><span>中文设置：点击【解锁存档】自动设置简体中文。或者手动设置OPTIONS-Language-简中-保存</span></p><h4><a name="41这是我的战争" class="md-header-anchor"></a><span>41.这是我的战争</span></h4><p><span>游戏视频：</span><a href='https://www.bilibili.com/video/BV1cs411M7CR?from=search&amp;seid=16600077870469308198'><span>点击观看</span></a></p><p><strong><span>下载链接：</span></strong><a href='https://pan.baidu.com/s/1fYhA-KwtnUvvvb0MOWdVug'><span>点击下载游戏</span></a></p><p><strong><span>提取码：</span></strong><span>493h</span></p><p><strong><span>激活码：</span></strong><span>215422</span></p><h4><a name="42井中生物" class="md-header-anchor"></a><span>42.井中生物</span></h4><p><span>游戏视频：</span><a href='https://www.bilibili.com/video/BV1oE411e73G?from=search&amp;seid=12576313610090610390'><span>点击观看</span></a></p><p><span>链接：</span><a href='https://pan.baidu.com/s/1sO1ZsKevVRYQeMDCpWx1sg' target='_blank' class='url'>https://pan.baidu.com/s/1sO1ZsKevVRYQeMDCpWx1sg</a></p><p><span>提取码：eq2n</span></p><h4><a name="43海商王" class="md-header-anchor"></a><span>43.海商王</span></h4><p><span>游戏视频预览：</span><a href='https://media.st.dl.pinyuncloud.com/steam/apps/256789794/movie480_vp9.webm?t=1592497784'><span>点击查看</span></a></p><p><span>下载链接： </span><a href='https://pan.baidu.com/s/1yZFuyd1DCwShFYXMpZ1PpA'><span>点击下载</span></a></p><p><span>赠品链接： 敬请期待</span></p><p><span>激活码：提取码：6851</span></p><h4><a name="44泰拉瑞亚" class="md-header-anchor"></a><span>44.泰拉瑞亚【】</span></h4><p><span>游戏视频：</span><a href='https://www.bilibili.com/video/BV1Cs411c71d?from=search&amp;seid=6108009963007516780'><span>点击观看</span></a></p><p><span>链接：</span><a href='https://pan.baidu.com/s/1Sq9KLAlvO-rvLNtZxmK9kA' target='_blank' class='url'>https://pan.baidu.com/s/1Sq9KLAlvO-rvLNtZxmK9kA</a><span> </span></p><p><span>提取码：rnzh</span></p><p><span>激活码：985695</span></p><h4><a name="45空洞骑士" class="md-header-anchor"></a><span>45.空洞骑士</span></h4><p><span> </span><strong><span>游戏视频预览：   </span><a href='https://media.st.dl.eccdnx.com/steam/apps/256679401/movie480.webm?t=1497589417'><span>    点击查看   </span></a></strong><span> </span></p><p><span>下载链接： </span><a href='https://pan.baidu.com/s/1-32YyH0M04y3j70zrMb9pA'><span>点击下载</span></a>
+<span>赠品链接： </span><a href='https://pan.baidu.com/s/1KmygOM3P-PNZPx1CN3eS1A'><span>点击下载</span></a>
+<span>激活码：【提取码：5555】</span></p><h4><a name="46少林九武猴" class="md-header-anchor"></a><span>46.少林九武猴</span></h4><p><span>游戏视频预览：</span><a href='https://media.st.dl.pinyuncloud.com/steam/apps/256803609/movie480_vp9.webm?t=1601922394'><span>点击查看</span></a></p><p><span>下载链接： </span><a href='https://pan.baidu.com/s/1ilvGtb7dBnV9A894NOK2sg'><span>点击下载</span></a>
+<span>赠品链接： 敬请期待</span>
+<span>激活码：提取码：8641</span></p><h4><a name="47人类一败涂地" class="md-header-anchor"></a><span>47.人类：一败涂地</span></h4><p><span>游戏视频：</span><a href='https://www.biligame.com/detail/?id=104860&amp;sourceFrom=1112'><span>立即查看</span></a></p><p><strong><span>下载地址：</span></strong><span>  </span></p><p><span> </span><strong><span>链接：   </span><a href='https://pan.baidu.com/s/1yJpqsJ9EtomDwaaPA6Sxdw'><span>    https://pan.baidu.com/s/1yJpqsJ9EtomDwaaPA6Sxdw   </span></a><span>   提取码：itku</span></strong><span>  </span></p><h4><a name="48奇异人生2-全5章奇异人生2全章节解锁版" class="md-header-anchor"></a><span>48.奇异人生2 全5章/奇异人生2全章节解锁版</span></h4><p><span>游戏视频：</span><a href='https://www.biligame.com/detail/?id=105261&amp;sourceFrom=1112'><span>立即查看</span></a></p><p><span>下载链接：</span><a href='https://pan.baidu.com/s/1yiFex_WnDMKh1iEpeWrIMw#list/path=%2F' target='_blank' class='url'>https://pan.baidu.com/s/1yiFex_WnDMKh1iEpeWrIMw#list/path=%2F</a></p><p><span>赠品链接：</span><a href='https://pan.baidu.com/s/16GA-0aCaowwIoX9zIspwvg#list/path=%2F' target='_blank' class='url'>https://pan.baidu.com/s/16GA-0aCaowwIoX9zIspwvg#list/path=%2F</a></p><p><span>激活码：659887</span></p><h4><a name="49中世纪王朝" class="md-header-anchor"></a><span>49.中世纪王朝</span></h4><p><span>游戏视频预览：</span><a href='https://media.st.dl.pinyuncloud.com/steam/apps/256799532/movie480_vp9.webm?t=1600251871'><span>点击查看</span></a>
+<span>下载链接： </span><a href='https://pan.baidu.com/s/1eieV4phJfcILC4_5uANqOg'><span>点击下载</span></a>
+<span>赠品链接： 敬请期待</span></p><p><span>激活码：提取码：3564</span></p><h4><a name="50网吧模拟器" class="md-header-anchor"></a><span>50.网吧模拟器</span></h4><p><span>游戏视频：</span><a href='https://www.bilibili.com/video/BV1Q7411r7Hy?from=search&amp;seid=11421044821262639280'><span>点击观看</span></a></p><p><span>下载链接：</span><a href='https://pan.baidu.com/s/1A06fp5TIeMWyGln9xaQASw'><span>点击下载</span></a></p><p><span>激活码：874996</span></p><h4><a name="51油管主播的生活" class="md-header-anchor"></a><span>51.油管主播的生活</span></h4><p><span>游戏视频：</span><a href='https://media.st.dl.pinyuncloud.com/steam/apps/256750496/movie480.webm?t=1559641316'><span>点击查看</span></a></p><p><span>下载链接：</span><a href='https://pan.baidu.com/s/1wfiHeGCvFamE1WY6kLIAOA#list/path=%2F' target='_blank' class='url'>https://pan.baidu.com/s/1wfiHeGCvFamE1WY6kLIAOA#list/path=%2F</a></p><p><span>激活码：362225</span></p><h4><a name="52缺氧" class="md-header-anchor"></a><span>52.缺氧</span></h4><p><span>游戏视频：</span><a href='https://www.bilibili.com/video/BV1U4411H7b2?from=search&amp;seid=18058675230810513761'><span>点击观看</span></a></p><p><strong><span>下载链接：</span></strong><a href='https://pan.baidu.com/s/1xYLN_g7coPHo5uyCwTkC9g'><span>点击下载游戏</span></a></p><p><strong><span>提取码：</span></strong><span>8ggn</span></p><p><strong><span>激活码：</span></strong><span>362365</span></p><h4><a name="53边缘世界环世界1g" class="md-header-anchor"></a><span>53.边缘世界/环世界(1G)</span></h4><p><span>下载链接： </span><a href='https://pan.baidu.com/s/1Sib9gfIdK0stbx6rwprqQg'><span>点击下载</span></a>
+<span>赠品链接： </span><a href='https://pan.baidu.com/s/1JiV50X37a-5Uw7SrJJuo5w'><span>点击下载</span></a></p><p><span>激活码：336964</span></p><h4><a name="54桥梁建造者07g" class="md-header-anchor"></a><span>54.桥梁建造者(0.7G)【】</span></h4><p><span>游戏视频：</span><a href='https://media.st.dl.pinyuncloud.com/steam/apps/256786336/movie480_vp9.webm?t=1590683139'><span>立即查看</span></a></p><p><span>链接;</span><a href='https://pan.baidu.com/s/1vpAJhaLtMozRmhZ1t2Sz9A#list/path=%2F' target='_blank' class='url'>https://pan.baidu.com/s/1vpAJhaLtMozRmhZ1t2Sz9A#list/path=%2F</a></p><p><span>激活码：789663</span></p><h4><a name="55伟大时代中世纪5g" class="md-header-anchor"></a><span>55.伟大时代：中世纪（5G)</span></h4><p><span>游戏视频：</span><a href='https://media.st.dl.pinyuncloud.com/steam/apps/256656818/movie480.webm?t=1447378267'><span>立即查看</span></a></p><p><span>链接：</span><a href='https://pan.baidu.com/s/1bBbtcmVdulhDcCSLE5HvvA#list/path=%2F' target='_blank' class='url'>https://pan.baidu.com/s/1bBbtcmVdulhDcCSLE5HvvA#list/path=%2F</a></p><p><span>赠品：</span><a href='https://pan.baidu.com/s/1y8hQNshqoDSr-eHXpxHvpA#list/path=%2F' target='_blank' class='url'>https://pan.baidu.com/s/1y8hQNshqoDSr-eHXpxHvpA#list/path=%2F</a></p><p><span>激活码：259887</span></p><h4><a name="56王国风云2十字军之王2" class="md-header-anchor"></a><span>56.王国风云2/十字军之王2</span></h4><p><span>游戏视频预览：</span><a href='https://media.st.dl.pinyuncloud.com/steam/apps/81433/movie480.webm?t=1447355441'><span>点击查看</span></a></p><p><span>下载链接： </span><a href='https://pan.baidu.com/s/1oaEn8hP-bAbeyBEUY6Hujg'><span>点击下载</span></a><span>赠品链接： </span><a href='https://pan.baidu.com/s/1kDjz3M9vhhDPounaVM0PrA'><span>点击下载</span></a>
+<span>激活码：587458</span></p><h4><a name="57统一指挥21g）" class="md-header-anchor"></a><span>57.统一指挥2（1G）【】</span></h4><p><span>游戏视频：</span><a href='https://www.bilibili.com/video/BV1e4411c7E5?from=search&amp;seid=14814261531192425678'><span>点击观看</span></a></p><p><span>下载链接： </span><a href='https://pan.baidu.com/s/1k98zi1kSX8o76S6hyj4ddw'><span>点击下载</span></a>
+<span>赠品链接： 敬请期待</span>
+<span>提取码：8tum</span></p><h4><a name="58枪与香蕉" class="md-header-anchor"></a><span>58.枪与香蕉</span></h4><p><span>游戏视频：</span><a href='https://media.st.dl.pinyuncloud.com/steam/apps/256781606/movie480_vp9.webm?t=1586836653'><span>立即查看</span></a></p><p><span>链接：</span><a href='https://pan.baidu.com/s/1ah0UwjctWLPAu-Q2cfBnDA#list/path=%2F' target='_blank' class='url'>https://pan.baidu.com/s/1ah0UwjctWLPAu-Q2cfBnDA#list/path=%2F</a></p><p><span>激活码：325889</span></p><h4><a name="59全面战争模拟器" class="md-header-anchor"></a><span>59.全面战争模拟器</span></h4><p><span>游戏视频预览：</span><a href='https://media.st.dl.pinyuncloud.com/steam/apps/256746848/movie480.webm?t=1554116569'><span>点击查看</span></a></p><p><span>下载链接： </span><a href='https://pan.baidu.com/s/1R6-p1pHFCPhe8h-LqkAzjA'><span>点击下载</span></a>
+<span>赠品链接： 敬请期待</span></p><p><span>激活码：548885</span></p><h4><a name="60异星探险家网络联机版星球探索者网络联机" class="md-header-anchor"></a><span>60.异星探险家：网络联机版/星球探索者网络联机</span></h4><p><span>游戏视频：</span><a href='https://www.bilibili.com/video/BV1s7411Y7S7?from=search&amp;seid=16901550820135651738'><span>点击观看</span></a></p><p><span>激活码：632632</span>
+<span>下载链接：</span><a href='https://pan.baidu.com/s/1sPJxl-a2434HZU2W2uEifA'><span>点击下载</span></a>
+<span>赠品链接：暂无赠品</span></p><h4><a name="61浮岛物语" class="md-header-anchor"></a><span>61.浮岛物语</span></h4><p><span>游戏视频：</span><a href='https://www.bilibili.com/video/BV1Nb41157iM?from=search&amp;seid=1412384180718683484'><span>立即查看</span></a></p><p><span>链接：</span><a href='https://pan.baidu.com/s/11am0OkRDWnelPYQ6lGUOKw#list/path=%2F' target='_blank' class='url'>https://pan.baidu.com/s/11am0OkRDWnelPYQ6lGUOKw#list/path=%2F</a><span> </span></p><p><span>激活码：632233</span></p><h4><a name="62arise一个平凡的故事" class="md-header-anchor"></a><span>62.Arise：一个平凡的故事</span></h4><p><span>游戏视频预览：</span><a href='https://media.st.dl.pinyuncloud.com/steam/apps/256774329/movie480.webm?t=1593072959'><span>点击观看</span></a></p><p><span>激活码：358774</span>
+<span>下载链接：</span><a href='https://pan.baidu.com/s/1u3S27X1jsKDrJOPdBJzQcA'><span>点击下载</span></a></p><h4><a name="63末日准备狂" class="md-header-anchor"></a><span>63.末日准备狂</span></h4><p><a href='https://media.st.dl.pinyuncloud.com/steam/apps/256750533/movie480.webm?t=1557780962'><span>点击预览</span></a></p><p><strong><span>下载链接：</span><a href='https://pan.baidu.com/s/1FQ3j1L5QVfmhaZAwe-socg#list/path=%2F'><span>点击下载游戏</span></a></strong></p><p><strong><span>激活码：259997</span></strong></p><h4><a name="64鬼谷八荒" class="md-header-anchor"></a><span>64.鬼谷八荒</span></h4><p><span>游戏视频：</span><a href='https://www.bilibili.com/video/BV1Po4y197YL?from=search&amp;seid=13110823275393896805'><span>点击观看</span></a></p><p><span>激活码：258774</span></p><p><span>提取码：mck6</span></p><p><span>下载链接：</span><a href='https://pan.baidu.com/share/init?surl=PFfpaw_Xwn_64XKNnzEhjw'><span>点击下载</span></a>
+<span>赠品链接：暂无赠品</span></p><h4><a name="65野性的海洋😡）" class="md-header-anchor"></a><span>65.野性的海洋（😡）</span></h4><p><span>游戏视频：</span><a href='https://www.bilibili.com/video/BV1HE411h7rv?from=search&amp;seid=4054141369472492821'><span>点击观看</span></a></p><p><span>激活码：587774</span>
+<span>下载链接：</span><a href='https://pan.baidu.com/s/1h5CgdJ0yjuJ0UTu-z2XyfA'><span>点击下载</span></a>
+<span>赠品链接：暂无赠品</span></p><h4><a name="66要塞3" class="md-header-anchor"></a><span>66.要塞3</span></h4><p><span>游戏视频：</span><a href='https://www.bilibili.com/video/BV1WW411k7VA?from=search&amp;seid=1264425157084462301'><span>点击查看</span></a></p><p><span>链接：</span><a href='https://pan.baidu.com/s/1_6qv-6pMHqqf-Z8_I8L2ag' target='_blank' class='url'>https://pan.baidu.com/s/1_6qv-6pMHqqf-Z8_I8L2ag</a><span> </span></p><p><span>提取码：tja8</span></p><h4><a name="67饥荒" class="md-header-anchor"></a><span>67.饥荒</span></h4><p><strong><span>游戏视频预览：   </span><a href='https://www.biligame.com/detail/?id=104045&amp;sourceFrom=1112'><span>    点击查看   </span></a></strong><span> </span></p><p><strong><span>下载链接：</span></strong><a href='https://pan.baidu.com/s/1xitdou3DQqM1KmUsU87xwA'><span>点击下载游戏</span></a></p><p><strong><span>提取码：</span></strong><span>vxf1</span></p><p><strong><span>激活码：</span></strong><span>658774</span></p><h4><a name="68义军" class="md-header-anchor"></a><span>68.义军</span></h4><p><strong><span>游戏视频预览：   </span><a href='https://media.st.dl.bscstorage.net/steam/apps/256761033/movie480.webm?t=1567770357'><span>    点击查看   </span></a></strong><span> </span></p><p><span> 下载链接：</span><a href='https://pan.baidu.com/s/1WMrGQtAYWoQe0sqP8R7U4Q' target='_blank' class='url'>https://pan.baidu.com/s/1WMrGQtAYWoQe0sqP8R7U4Q</a></p><p><span> 激活码：748547</span></p></div>
+</body>
+</html>
